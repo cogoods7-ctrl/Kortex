@@ -64,6 +64,7 @@
       width: 32px;
       height: 32px;
       filter: invert(1);
+      mix-blend-mode: multiply;
     }
 
     .nav-logo-text {
@@ -1296,27 +1297,27 @@
         <h2 style="font-size:26px;font-weight:800;letter-spacing:-0.01em;">Start your project</h2>
       </div>
 
-      <form class="contact-form" onsubmit="submitForm(event)">
+      <form class="contact-form" action="https://formspree.io/f/mjgjylkb" method="POST">
 
         <div class="form-row">
           <div class="form-group">
             <label class="form-label">First Name</label>
-            <input class="form-input" type="text" placeholder="Jane" required>
+            <input class="form-input" type="text" name="first_name" placeholder="Jane" required>
           </div>
           <div class="form-group">
             <label class="form-label">Last Name</label>
-            <input class="form-input" type="text" placeholder="Smith" required>
+            <input class="form-input" type="text" name="last_name" placeholder="Smith" required>
           </div>
         </div>
 
         <div class="form-group">
           <label class="form-label">Email Address</label>
-          <input class="form-input" type="email" placeholder="jane@company.com" required>
+          <input class="form-input" type="email" name="email" placeholder="jane@company.com" required>
         </div>
 
         <div class="form-group">
           <label class="form-label">Package Interest</label>
-          <select class="form-select form-input">
+          <select class="form-select form-input" name="package">
             <option value="">— Select a package —</option>
             <option value="base">Base Website — $75</option>
             <option value="ai">AI-Enhanced Website — $100</option>
@@ -1329,7 +1330,7 @@
 
         <div class="form-group">
           <label class="form-label">Tell us about your project</label>
-          <textarea class="form-textarea" placeholder="What are you building? What does your business do? Any specific features in mind?"></textarea>
+          <textarea class="form-textarea" name="message" placeholder="What are you building? What does your business do? Any specific features in mind?"></textarea>
         </div>
 
         <button type="submit" class="form-submit">Send Message →</button>
@@ -1365,16 +1366,7 @@
     if (!wasOpen) item.classList.add('open');
   }
 
-  function submitForm(e) {
-    e.preventDefault();
-    const btn = e.target.querySelector('.form-submit');
-    btn.textContent = 'Sending…';
-    btn.disabled = true;
-    setTimeout(() => {
-      btn.style.display = 'none';
-      document.getElementById('form-success').style.display = 'block';
-    }, 1200);
-  }
+  // Form submission is handled by Formspree directly via the form action attribute.
 </script>
 </body>
 </html>
